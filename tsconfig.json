@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "module": "amd",
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "strict": true,
+    "outFile": "./public/index.js",
+    "lib": [
+      "DOM",
+      "ESNext"
+    ]
+  },
+  "files": [
+    "./src/index.ts"
+  ]
+}
