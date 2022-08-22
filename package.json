@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "npm run build && npm run serve",
     "build": "npx tsc -p .",
-    "serve": "npx http-server ./public"
+    "serve": "npx http-server -c-1 ./public"
   },
   "keywords": [
     "game_of_life"

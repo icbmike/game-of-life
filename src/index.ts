@@ -5,12 +5,12 @@ import { Game } from "./Game";
 
 const { cvs, ctx } = createCanvasAndContext();
 
-document.body.appendChild(cvs);
-
-const game = new Game(100, [
+const game = new Game(80, [
     { x: 50, y: 50 },
-    { x: 49, y: 49 },
-    { x: 51, y: 51 },
+    { x: 51, y: 50 },
+    { x: 52, y: 50 },
+    { x: 51, y: 48 },
+    { x: 52, y: 49 },
 
 ]);
 
@@ -18,6 +18,7 @@ let last = performance.now();
 
 const loop = (now: number) => {
     const delta = now - last;
+    last = now;
 
     update(game, delta, ctx);
 
