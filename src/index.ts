@@ -3,6 +3,7 @@ import { update } from "./update";
 import { draw } from "./draw";
 import { CellGrid } from "./CellGrid";
 import { Game } from "./Game";
+import { setupEventHandlers } from "./setupEventHandlers";
 
 const { cvs, ctx } = createCanvasAndContext();
 
@@ -15,8 +16,12 @@ const game: Game =
         { x: 51, y: 48 },
         { x: 52, y: 49 },
 
-    ]), mode: 'Play'
+    ]),
+    mode: 'Play',
+    mousePosition: { x: 0, y: 0 }
 };
+
+setupEventHandlers(game, cvs);
 
 let last = performance.now();
 

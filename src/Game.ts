@@ -4,5 +4,6 @@ export type Mode = 'Play' | 'Pause';
 
 export interface Game {
     cells: ICellGrid,
-    mode: Mode
+    mode: Mode,
+    mousePosition: { x: number, y: number }
 }

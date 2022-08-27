@@ -1,7 +1,7 @@
 import { Game } from "./Game";
 
 export const draw = (ctx: CanvasRenderingContext2D, game: Game, delta: number) => {
-    const { cells } = game;
+    const { cells, mousePosition: { x, y } } = game;
 
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
@@ -23,7 +23,12 @@ export const draw = (ctx: CanvasRenderingContext2D, game: Game, delta: number) =
     for (let j = 0; j < cells.getSize(); j++) {
         ctx.beginPath();
         ctx.moveTo(0, j * 10);
-        ctx.lineTo(ctx.canvas.width, j * 10);
+        ctx.lineTo(cells.getSize() * 10, j * 10);
         ctx.stroke();
     }
+
+    ctx.fillStyle = 'black';
+    ctx.fillText(`Canvas position x: ${x}, y: ${y}`, cells.getSize() * 10 + 10, 10);
+    ctx.fillText(`Cell position x: ${Math.floor(x / 10)}, y: ${Math.floor(y / 10)}`, cells.getSize() * 10 + 10, 20);
+
 }

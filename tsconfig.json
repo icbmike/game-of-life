@@ -13,7 +13,6 @@
     ]
   },
   "files": [
-    "./src/index.ts",
-    "./src/count.ts"
+    "./src/index.ts"
   ]
 }
