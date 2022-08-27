@@ -1,14 +1,12 @@
-import { IGame } from "./Game";
-
-function count<T>(arr: T[], predicate: (t: T) => boolean): number {
-    return arr.filter(predicate).length;
-}
+import { ICellGrid } from "./CellGrid";
+import { count } from "./count";
+import { Game } from './Game';
 
 const generationLength = 100; // 5s
 
 let generationAge = 0;
 
-export const update = (game: IGame, delta: number, ctx: CanvasRenderingContext2D) => {
+function playModeUpdate(game: ICellGrid, delta: number, ctx: CanvasRenderingContext2D) {
     generationAge += delta;
 
     if (generationAge > generationLength) {
@@ -34,5 +32,17 @@ export const update = (game: IGame, delta: number, ctx: CanvasRenderingContext2D
         }
 
         game.setLiveCells(nextGenerationCells);
+    }
+}
+
+function pauseModeUpdate(game: Game, delta: number, ctx: CanvasRenderingContext2D) {
+
+}
+
+export const update = (game: Game, delta: number, ctx: CanvasRenderingContext2D) => {
+    if (game.mode === 'Play') {
+        playModeUpdate(game.cells, delta, ctx);
+    } else {
+        pauseModeUpdate(game, delta, ctx);
     }
 }

@@ -1,12 +1,14 @@
-import { IGame } from "./Game";
+import { Game } from "./Game";
 
-export const draw = (ctx: CanvasRenderingContext2D, game: IGame, delta: number) => {
+export const draw = (ctx: CanvasRenderingContext2D, game: Game, delta: number) => {
+    const { cells } = game;
+
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
-    for (let i = 0; i < game.getSize(); i++) {
+    for (let i = 0; i < cells.getSize(); i++) {
 
-        for (let j = 0; j < game.getSize(); j++) {
-            if (game.isAlive(i, j)) {
+        for (let j = 0; j < cells.getSize(); j++) {
+            if (cells.isAlive(i, j)) {
                 ctx.fillRect(i * 10, j * 10, 10, 10);
             }
         }
@@ -18,7 +20,7 @@ export const draw = (ctx: CanvasRenderingContext2D, game: IGame, delta: number) 
         ctx.stroke();
     }
 
-    for (let j = 0; j < game.getSize(); j++) {
+    for (let j = 0; j < cells.getSize(); j++) {
         ctx.beginPath();
         ctx.moveTo(0, j * 10);
         ctx.lineTo(ctx.canvas.width, j * 10);
