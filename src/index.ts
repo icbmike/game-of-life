@@ -17,7 +17,7 @@ const game: Game =
         { x: 52, y: 49 },
 
     ]),
-    mode: 'Play',
+    mode: 'Pause',
     mousePosition: { x: 0, y: 0 }
 };
 

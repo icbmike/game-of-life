@@ -1,7 +1,12 @@
 import { Game } from "./Game";
 
+const cellScale = 10;
+
 export const draw = (ctx: CanvasRenderingContext2D, game: Game, delta: number) => {
-    const { cells, mousePosition: { x, y } } = game;
+    const { mode, cells, mousePosition: { x, y } } = game;
+
+    const cellX = Math.floor(x / cellScale);
+    const cellY = Math.floor(y / cellScale);
 
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
@@ -9,26 +14,50 @@ export const draw = (ctx: CanvasRenderingContext2D, game: Game, delta: number) =
 
         for (let j = 0; j < cells.getSize(); j++) {
             if (cells.isAlive(i, j)) {
-                ctx.fillRect(i * 10, j * 10, 10, 10);
+                ctx.fillRect(i * cellScale, j * cellScale, cellScale, cellScale);
             }
         }
 
         ctx.beginPath();
         ctx.strokeStyle = 'grey';
-        ctx.moveTo((i + 1) * 10, 0);
-        ctx.lineTo((i + 1) * 10, ctx.canvas.height);
+        ctx.moveTo((i + 1) * cellScale, 0);
+        ctx.lineTo((i + 1) * cellScale, ctx.canvas.height);
         ctx.stroke();
     }
 
     for (let j = 0; j < cells.getSize(); j++) {
         ctx.beginPath();
-        ctx.moveTo(0, j * 10);
-        ctx.lineTo(cells.getSize() * 10, j * 10);
+        ctx.moveTo(0, j * cellScale);
+        ctx.lineTo(cells.getSize() * cellScale, j * cellScale);
+        ctx.stroke();
+    }
+
+    if (mode === 'Pause') {
+        ctx.strokeStyle = 'white';
+
+        ctx.beginPath();
+        ctx.moveTo(cellX * cellScale, (cellY - 0.5) * cellScale);
+        ctx.lineTo(cellX * cellScale, (cellY + 1.5) * cellScale);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(cellX * cellScale + cellScale, (cellY - 0.5) * cellScale);
+        ctx.lineTo(cellX * cellScale + cellScale, (cellY + 1.5) * cellScale);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo((cellX - 0.5) * cellScale, cellY * cellScale);
+        ctx.lineTo((cellX + 1.5) * cellScale, cellY * cellScale);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo((cellX - 0.5) * cellScale, (cellY + 1) * cellScale);
+        ctx.lineTo((cellX + 1.5) * cellScale, (cellY + 1) * cellScale);
         ctx.stroke();
     }
 
     ctx.fillStyle = 'black';
-    ctx.fillText(`Canvas position x: ${x}, y: ${y}`, cells.getSize() * 10 + 10, 10);
-    ctx.fillText(`Cell position x: ${Math.floor(x / 10)}, y: ${Math.floor(y / 10)}`, cells.getSize() * 10 + 10, 20);
+    ctx.fillText(`Canvas position x: ${x}, y: ${y}`, cells.getSize() * cellScale + cellScale, cellScale);
 
+    ctx.fillText(`Cell position x: ${cellX}, y: ${cellY}`, cells.getSize() * cellScale + cellScale, 20);
 }
