@@ -6,6 +6,8 @@ export interface ICellGrid {
     getSize(): number;
 
     setLiveCells(cells: { x: number, y: number }[]): void;
+
+    toggleCell(x: number, y: number): void;
 }
 
 export class CellGrid implements ICellGrid {
@@ -42,6 +44,10 @@ export class CellGrid implements ICellGrid {
             this.cells[x][y] = true;
         }
     };
+
+    toggleCell(x: number, y: number) {
+        this.cells[x][y] = !this.cells[x][y];
+    }
 
     getNeighbours(x: number, y: number): { x: number, y: number, isAlive: boolean }[] {
         const ds = [-1, 0, 1].flatMap((v, i, a) => a.map(v2 => ({ dx: v, dy: v2 })))

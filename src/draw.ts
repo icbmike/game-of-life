@@ -1,9 +1,7 @@
 import { Game } from "./Game";
 
-const cellScale = 10;
-
 export const draw = (ctx: CanvasRenderingContext2D, game: Game, delta: number) => {
-    const { mode, cells, mousePosition: { x, y } } = game;
+    const { mode, cells, mousePosition: { x, y }, cellScale } = game;
 
     const cellX = Math.floor(x / cellScale);
     const cellY = Math.floor(y / cellScale);

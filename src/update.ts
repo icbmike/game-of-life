@@ -36,7 +36,17 @@ function playModeUpdate(game: ICellGrid, delta: number, ctx: CanvasRenderingCont
 }
 
 function pauseModeUpdate(game: Game, delta: number, ctx: CanvasRenderingContext2D) {
+    const { clickEvent, cellScale } = game;
 
+    if (clickEvent) {
+        const { clientX: x, clientY: y } = clickEvent;
+        const cellX = Math.floor(x / cellScale);
+        const cellY = Math.floor(y / cellScale);
+
+        console.log(`Clicked on canvas at x: ${x} y: ${y}. This is cell x: ${cellX} y: ${cellY}`);
+
+        game.cells.toggleCell(cellX, cellY);
+    }
 }
 
 export const update = (game: Game, delta: number, ctx: CanvasRenderingContext2D) => {

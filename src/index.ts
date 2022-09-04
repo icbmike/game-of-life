@@ -3,7 +3,7 @@ import { update } from "./update";
 import { draw } from "./draw";
 import { CellGrid } from "./CellGrid";
 import { Game } from "./Game";
-import { setupEventHandlers } from "./setupEventHandlers";
+import { setupEventHandlers, clearEvents } from "./setupEventHandlers";
 
 const { cvs, ctx } = createCanvasAndContext();
 
@@ -18,8 +18,18 @@ const game: Game =
 
     ]),
     mode: 'Pause',
-    mousePosition: { x: 0, y: 0 }
+    mousePosition: { x: 0, y: 0 },
+    clickEvent: undefined,
+    cellScale: 10
 };
+
+const b = document.createElement('button');
+b.innerText = 'Play/Pause';
+b.onclick = () => {
+    game.mode = game.mode == 'Pause' ? 'Play' : 'Pause';
+};
+
+document.body.appendChild(b);
 
 setupEventHandlers(game, cvs);
 
@@ -32,6 +42,8 @@ const loop = (now: number) => {
     update(game, delta, ctx);
 
     draw(ctx, game, delta);
+
+    clearEvents(game);
 
     requestAnimationFrame(loop);
 };
