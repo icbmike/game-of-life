@@ -3,7 +3,7 @@ export const createCanvasAndContext = () => {
 
     cvs.style.height = '800px';
     cvs.style.width = '100%';
-    cvs.style.backgroundColor = 'pink';
+    cvs.style.backgroundColor = '#2b89cc';
 
     document.body.appendChild(cvs);
 
