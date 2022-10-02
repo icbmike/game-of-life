@@ -6,7 +6,8 @@
   "scripts": {
     "start": "npm run build && npm run serve",
     "build": "npx tsc -p .",
-    "serve": "npx http-server -c-1 ./public"
+    "serve": "npx http-server -c-1 ./public",
+    "watch": "npx tsc -p . --watch"
   },
   "keywords": [
     "game_of_life"

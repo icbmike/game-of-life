@@ -2,10 +2,10 @@ export const createCanvasAndContext = () => {
     const cvs = document.createElement("canvas");
 
     cvs.style.height = '800px';
-    cvs.style.width = '100%';
+    cvs.style.width = '800px';
     cvs.style.backgroundColor = '#2b89cc';
-
-    document.body.appendChild(cvs);
+    cvs.className = 'canvas';
+    document.getElementsByClassName('app')[0].prepend(cvs);
 
     const dpr = window.devicePixelRatio || 1;
 

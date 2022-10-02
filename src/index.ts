@@ -7,6 +7,7 @@ import { setupEventHandlers, clearEvents } from "./setupEventHandlers";
 
 const { cvs, ctx } = createCanvasAndContext();
 
+
 const game: Game =
 {
     cells: new CellGrid(80, [
@@ -29,7 +30,7 @@ b.onclick = () => {
     game.mode = game.mode == 'Pause' ? 'Play' : 'Pause';
 };
 
-document.body.appendChild(b);
+document.getElementsByClassName("controls")[0].appendChild(b);
 
 setupEventHandlers(game, cvs);
 
