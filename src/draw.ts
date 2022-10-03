@@ -17,7 +17,7 @@ export const draw = (ctx: CanvasRenderingContext2D, game: Game, delta: number) =
         }
 
         ctx.beginPath();
-        ctx.strokeStyle = 'grey';
+        ctx.strokeStyle = '#b8b8b8';
         ctx.moveTo((i + 1) * cellScale, 0);
         ctx.lineTo((i + 1) * cellScale, ctx.canvas.height);
         ctx.stroke();
