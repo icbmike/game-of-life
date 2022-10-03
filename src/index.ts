@@ -20,7 +20,8 @@ const game: Game = {
   mousePosition: { x: 0, y: 0 },
   clickEvent: undefined,
   cellScale: 10,
-  prototype: undefined
+  prototype: undefined,
+  generationLength: 100
 };
 
 const controls = createControls(game);

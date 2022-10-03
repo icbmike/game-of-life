@@ -33,6 +33,20 @@ const newGliderGun = (game: Game) => {
     return b;
 }
 
+const generationLengthSlider = (game: Game) => {
+    const r = document.createElement("input");
+    r.type = 'range';
+    r.min = "1";
+    r.max = "300";
+    r.value = game.generationLength.toString()
+    
+    r.onchange = () => {
+        game.generationLength = parseInt(r.value)
+    }
+
+    return r;
+};
+
 export const createControls = (game: Game) => {
     const container = document.createElement('div');
     container.className = 'controls';
@@ -40,7 +54,8 @@ export const createControls = (game: Game) => {
     container.append(
         playPauseButton(game),
         newGlider(game),
-        newGliderGun(game)
+        newGliderGun(game),
+        generationLengthSlider(game)
     );
 
     return container;

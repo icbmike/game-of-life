@@ -9,4 +9,5 @@ export interface Game {
     clickEvent: { x: number, y: number } | undefined,
     cellScale: number,
     prototype: 'Glider'| 'Glider Gun' | undefined;
+    generationLength: number;
 }
