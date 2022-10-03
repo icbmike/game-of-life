@@ -18,6 +18,7 @@ export const draw = (ctx: CanvasRenderingContext2D, game: Game, delta: number) =
 
         ctx.beginPath();
         ctx.strokeStyle = '#b8b8b8';
+        ctx.lineWidth = 0.5;
         ctx.moveTo((i + 1) * cellScale, 0);
         ctx.lineTo((i + 1) * cellScale, ctx.canvas.height);
         ctx.stroke();
@@ -32,6 +33,7 @@ export const draw = (ctx: CanvasRenderingContext2D, game: Game, delta: number) =
 
     if (mode === 'Pause') {
         ctx.strokeStyle = 'white';
+        ctx.lineWidth = 1;
 
         ctx.beginPath();
         ctx.moveTo(cellX * cellScale, (cellY - 0.5) * cellScale);
