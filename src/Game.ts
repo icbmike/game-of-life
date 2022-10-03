@@ -6,6 +6,6 @@ export interface Game {
     cells: ICellGrid,
     mode: Mode,
     mousePosition: { x: number, y: number },
-    clickEvent: MouseEvent | undefined,
+    clickEvent: { x: number, y: number } | undefined,
     cellScale: number
 }

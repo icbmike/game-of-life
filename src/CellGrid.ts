@@ -22,7 +22,11 @@ export class CellGrid implements ICellGrid {
     }
 
     isAlive(x: number, y: number): boolean {
-        return this.cells[x]?.[y] || false;
+
+        const indexX = this.toIndexCoord(x);
+        const indexY = this.toIndexCoord(y);
+
+        return this.cells[indexX]?.[indexY] || false;
     }
 
     getSize(): number {
@@ -41,7 +45,8 @@ export class CellGrid implements ICellGrid {
 
         for (let index = 0; index < cells.length; index++) {
             const { x, y } = cells[index];
-            this.cells[x][y] = true;
+
+            this.cells[this.toIndexCoord(x)][this.toIndexCoord(y)] = true;
         }
     };
 
@@ -54,9 +59,13 @@ export class CellGrid implements ICellGrid {
             .filter(d => !(d.dx == 0 && d.dy == 0))
 
         return ds.map(({ dx, dy }) => ({
-            x: x + dx,
-            y: y + dy,
+            x: this.toIndexCoord(x + dx),
+            y: this.toIndexCoord(y + dy),
             isAlive: this.isAlive(x + dx, y + dy)
         }));
+    }
+
+    private toIndexCoord(n: number) {
+        return (n < 0 ? this.size + n : n) % this.size;
     }
 }

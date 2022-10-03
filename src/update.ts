@@ -39,7 +39,7 @@ function pauseModeUpdate(game: Game, delta: number, ctx: CanvasRenderingContext2
     const { clickEvent, cellScale } = game;
 
     if (clickEvent) {
-        const { clientX: x, clientY: y } = clickEvent;
+        const { x, y } = clickEvent;
         const cellX = Math.floor(x / cellScale);
         const cellY = Math.floor(y / cellScale);
 
@@ -47,6 +47,7 @@ function pauseModeUpdate(game: Game, delta: number, ctx: CanvasRenderingContext2
 
         game.cells.toggleCell(cellX, cellY);
     }
+    console.log(game.mousePosition);
 }
 
 export const update = (game: Game, delta: number, ctx: CanvasRenderingContext2D) => {

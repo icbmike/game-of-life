@@ -11,11 +11,11 @@ const { cvs, ctx } = createCanvasAndContext();
 const game: Game =
 {
     cells: new CellGrid(80, [
-        { x: 50, y: 50 },
-        { x: 51, y: 50 },
-        { x: 52, y: 50 },
-        { x: 51, y: 48 },
-        { x: 52, y: 49 },
+        { x: 70, y: 50 },
+        { x: 71, y: 50 },
+        { x: 72, y: 50 },
+        { x: 71, y: 48 },
+        { x: 72, y: 49 },
 
     ]),
     mode: 'Pause',
