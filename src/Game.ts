@@ -7,5 +7,6 @@ export interface Game {
     mode: Mode,
     mousePosition: { x: number, y: number },
     clickEvent: { x: number, y: number } | undefined,
-    cellScale: number
+    cellScale: number,
+    prototype: 'Glider'| 'Glider Gun' | undefined;
 }

@@ -6,6 +6,8 @@ export interface ICellGrid {
     getSize(): number;
 
     setLiveCells(cells: { x: number, y: number }[]): void;
+    setLiveCell(x: number, y: number): void;
+    setDeadCell(x: number, y: number): void;
 
     toggleCell(x: number, y: number): void;
 }
@@ -49,6 +51,14 @@ export class CellGrid implements ICellGrid {
             this.cells[this.toIndexCoord(x)][this.toIndexCoord(y)] = true;
         }
     };
+
+    setLiveCell(x: number, y: number) {
+        this.cells[x][y] = true;
+    }
+
+    setDeadCell(x: number, y: number): void {
+        this.cells[x][y] = false;
+    }
 
     toggleCell(x: number, y: number) {
         this.cells[x][y] = !this.cells[x][y];
